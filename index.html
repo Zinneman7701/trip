@@ -14,10 +14,10 @@
             --card-white: #FFFFFF;
             --text-primary: #2D2926;
             --text-secondary: #6B6560;
-            --accent-coral: #E8927C;
-            --accent-sky: #7EB5D6;
-            --accent-mint: #8DC4B0;
-            --accent-lavender: #A89CC8;
+            --accent-coral: #E8927C; /* DAY 1 */
+            --accent-sky: #7EB5D6;   /* DAY 2 */
+            --accent-mint: #8DC4B0;  /* DAY 3 */
+            --accent-lavender: #A89CC8; /* DAY 4 */
             --shadow-soft: 0 4px 20px rgba(45, 41, 38, 0.08);
             --shadow-hover: 0 8px 30px rgba(45, 41, 38, 0.12);
             --border-radius: 20px;
@@ -51,22 +51,27 @@
         
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* 일자별 헤더 (뱃지 + 날짜) */
-        .day-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid transparent; }
-        
-        .day-section:nth-child(2) .day-header { border-color: var(--accent-coral); }
-        .day-section:nth-child(3) .day-header { border-color: var(--accent-sky); }
-        .day-section:nth-child(4) .day-header { border-color: var(--accent-mint); }
-        .day-section:nth-child(5) .day-header { border-color: var(--accent-lavender); }
-        
-        .day-badge { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; font-weight: 700; color: white; flex-shrink: 0; }
-        .day-section:nth-child(2) .day-badge { background: var(--accent-coral); }
-        .day-section:nth-child(3) .day-badge { background: var(--accent-sky); }
-        .day-section:nth-child(4) .day-badge { background: var(--accent-mint); }
-        .day-section:nth-child(5) .day-badge { background: var(--accent-lavender); }
-        
-        .day-info h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
-        .day-theme { color: var(--text-secondary); font-size: 0.95rem; }
+        /* DAY별 색상 테마 (시간/점/뱃지) */
+        /* DAY 1 */
+        .day-section:nth-of-type(1) .day-badge-large { background-color: var(--accent-coral); }
+        .day-section:nth-of-type(1) .time-label { color: var(--accent-coral); }
+        .day-section:nth-of-type(1) .timeline-dot { border-color: var(--accent-coral); }
+
+        /* DAY 2 */
+        .day-section:nth-of-type(2) .day-badge-large { background-color: var(--accent-sky); }
+        .day-section:nth-of-type(2) .time-label { color: var(--accent-sky); }
+        .day-section:nth-of-type(2) .timeline-dot { border-color: var(--accent-sky); }
+
+        /* DAY 3 */
+        .day-section:nth-of-type(3) .day-badge-large { background-color: var(--accent-mint); }
+        .day-section:nth-of-type(3) .time-label { color: var(--accent-mint); }
+        .day-section:nth-of-type(3) .timeline-dot { border-color: var(--accent-mint); }
+
+        /* DAY 4 */
+        .day-section:nth-of-type(4) .day-badge-large { background-color: var(--accent-lavender); }
+        .day-section:nth-of-type(4) .time-label { color: var(--accent-lavender); }
+        .day-section:nth-of-type(4) .timeline-dot { border-color: var(--accent-lavender); }
+
         
         /* 타임라인 스타일 */
         .timeline { position: relative; padding-left: 120px; }
@@ -79,16 +84,7 @@
         .time-label .time-main { display: block; font-size: 1.1rem; }
         .time-label .time-sub { display: block; font-size: 0.8rem; font-weight: 400; color: var(--text-secondary); }
         
-        .day-section:nth-child(2) .time-label { color: var(--accent-coral); }
-        .day-section:nth-child(3) .time-label { color: var(--accent-sky); }
-        .day-section:nth-child(4) .time-label { color: var(--accent-mint); }
-        .day-section:nth-child(5) .time-label { color: var(--accent-lavender); }
-        
         .timeline-dot { position: absolute; left: -26px; top: 28px; width: 16px; height: 16px; border-radius: 50%; background: white; border: 3px solid; z-index: 1; }
-        .day-section:nth-child(2) .timeline-dot { border-color: var(--accent-coral); }
-        .day-section:nth-child(3) .timeline-dot { border-color: var(--accent-sky); }
-        .day-section:nth-child(4) .timeline-dot { border-color: var(--accent-mint); }
-        .day-section:nth-child(5) .timeline-dot { border-color: var(--accent-lavender); }
         
         /* 카드 스타일 */
         .card { background: var(--card-white); border-radius: var(--border-radius); box-shadow: var(--shadow-soft); overflow: hidden; transition: all 0.3s ease; }
@@ -139,7 +135,7 @@
         .footer-icon { font-size: 32px; margin-bottom: 12px; }
         .footer-text { color: var(--text-secondary); font-size: 0.9rem; }
         
-        /* DAY 1 特別デザイン */
+        /* DAY 헤더 (사진 배경) 디자인 */
         .day-header-card {
             position: relative;
             width: 100%;
@@ -160,6 +156,7 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
+            filter: brightness(0.9);
         }
         .day-header-overlay {
             position: relative;
@@ -175,7 +172,6 @@
         }
         .day-badge-large {
             display: inline-block;
-            background: var(--accent-coral);
             color: white;
             font-family: 'Nanum Myeongjo', serif;
             font-size: 1.6rem;
@@ -201,7 +197,6 @@
         /* 모바일 반응형 */
         @media (max-width: 600px) {
             .header h1 { font-size: 1.8rem; }
-            .day-header { flex-direction: column; text-align: center; }
             .timeline { padding-left: 20px; }
             .timeline::before { left: 8px; }
             .time-label { position: relative; left: 0; top: 0; width: auto; text-align: left; margin-bottom: 8px; padding-left: 20px; }
@@ -226,7 +221,6 @@
         <section class="day-section">
             <div class="day-header-card">
                 <img src="D11.jpg" alt="DAY1 Background" class="day-header-bg">
-                
                 <div class="day-header-overlay">
                     <div class="day-badge-large">DAY 1</div>
                     <h2 class="day-date-large">1월 14일 (수)</h2>
@@ -253,16 +247,16 @@
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
-                    <div class="time-label"><span class="time-main">17:00</span><span class="time-sub">~17:30</span></div>
+                    <div class="time-label"><span class="time-main">17:00</span></div>
                     <div class="timeline-dot"></div>
                     <div class="card">
                         <div class="card-image has-image">
-                            <img src="2.PNG" alt="사이타마 신토신 야경">
+                            <img src="D1o.jpeg" alt="오미야역 쇼핑">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">사이타마 신토신 도착</h3>
-                            <p class="card-description">사이타마 신토신은 도쿄 근교에 위치한 새롭게 정비된 도시 지역입니다. 도시 전체가 넓고, 도로와 건물이 알기 쉽게 배치되어 있어 일본을 처음 방문하는 분도 편안하게 지낼 수 있습니다.</p>
-                            <a href="https://www.google.com/maps/search/Saitama-Shintoshin" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
+                            <h3 class="card-title">오미야역 주변 쇼핑 (루미네/소고/아르셰/마루이)</h3>
+                            <p class="card-description">오미야역 주변은 거대한 쇼핑 천국입니다. 역과 연결된 루미네(LUMINE)와 마루이(0101)부터, 백화점 소고(SOGO), 젊은 패션의 아르셰(ARCHE)까지 다양한 쇼핑몰이 모여있어 취향대로 즐길 수 있습니다.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Lumine+Omiya+Saitama" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
                         </div>
                     </div>
                 </div>
@@ -270,33 +264,16 @@
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
-                    <div class="time-label"><span class="time-main">17:30</span><span class="time-sub">~19:00</span></div>
+                    <div class="time-label"><span class="time-main">19:00</span></div>
                     <div class="timeline-dot"></div>
                     <div class="card">
                         <div class="card-image has-image">
-                            <img src="3.PNG" alt="코쿤시티 쇼핑">
+                            <img src="d1ko.png" alt="코메다 커피 오카게안">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">쇼핑 | 코쿤시티 (COCOON CITY)</h3>
-                            <p class="card-description">코쿤시티는 사이타마 신토신역에 직결된 일본 최대급 쇼핑몰입니다. 실내 중심이라 날씨에 영향받지 않아 도착일의 가벼운 산책에 적합합니다. 한국의 스타필드랑 비슷한 쇼핑몰입니다.</p>
-                            <a href="https://www.google.com/maps/search/Cocoon+City" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
-
-                <div class="timeline-item">
-                    <div class="time-label"><span class="time-main">19:00</span><span class="time-sub">~20:00</span></div>
-                    <div class="timeline-dot"></div>
-                    <div class="card">
-                        <div class="card-image has-image">
-                            <img src="4.PNG" alt="마루가메 제면 우동">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">저녁식사 | 마루가메 제면 코쿤시티점</h3>
-                            <p class="card-description">마루가메 제면은 일본 전국에 1,000개 이상의 매장을 운영하는 유명한 우동 전문 체인점입니다. 담백하여 이동 후 저녁 식사로 몸에 부담이 적습니다.</p>
-                            <a href="https://www.google.com/maps/search/Marugame+Seimen+Cocoon+City" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
+                            <h3 class="card-title">저녁식사 | 코메다 오카게안 (오미야 동쪽출구점)</h3>
+                            <p class="card-description">일반 코메다 커피와는 다른 '전통 디저트' 컨셉의 특별한 매장입니다. 테이블 위 미니 화로에서 직접 당고(떡)를 구워 먹는 재미있는 체험을 할 수 있으며, 식사 메뉴로 나폴리탄 스파게티나 우동도 즐길 수 있습니다.</p>
+                            <a href="https://maps.google.com/maps/contrib/100397031496561106873" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
                         </div>
                     </div>
                 </div>
@@ -321,15 +298,15 @@
         </section>
 
         <section class="day-section">
-         <div class="day-header-card">
+            <div class="day-header-card">
                 <img src="D20.jpeg" alt="DAY2 Background" class="day-header-bg">
-                
                 <div class="day-header-overlay">
-                    <div class="day-badge-large" style="background-color: var(--accent-sky);">DAY 2</div>
+                    <div class="day-badge-large">DAY 2</div>
                     <h2 class="day-date-large">1월 15일 (목)</h2>
                     <p class="day-theme-large">🗻 오미야 → 가와구치코 (자연・후지산・온천)</p>
                 </div>
             </div>
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="time-label"><span class="time-main">10:00</span></div>
@@ -441,9 +418,7 @@
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">호텔 체크인 | 가와구치코 사쿠라안</h3>
-                            <p class="card-description">사쿠라안은 가와구치코에 위치한 조용하고 차분한 분위기의 일본식 숙소입니다.
-관광 후 바로 온천으로 피로를 풀 수 있어 이동이 많은 날에 잘 어울립니다.
-자연 속에서 하루를 마무리하며 편안하게 쉬기 좋은 숙소입니다.</p>
+                            <p class="card-description">사쿠라안은 가와구치코에 위치한 조용하고 차분한 분위기의 일본식 숙소입니다. 관광 후 바로 온천으로 피로를 풀 수 있어 이동이 많은 날에 잘 어울립니다. 자연 속에서 하루를 마무리하며 편안하게 쉬기 좋은 숙소입니다.</p>
                             <a href="https://www.google.com/maps/search/Fuji+Kawaguchiko+Resort+Hotel+Sakuraan" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
                         </div>
                     </div>
@@ -452,18 +427,34 @@
         </section>
 
         <section class="day-section">
-         <div class="day-header-card">
+            <div class="day-header-card">
                 <img src="D30.jpeg" alt="DAY3 Background 요코하마" class="day-header-bg">
-                
                 <div class="day-header-overlay">
-                    <div class="day-badge-large" style="background-color: var(--accent-mint);">DAY 3</div>
+                    <div class="day-badge-large">DAY 3</div>
                     <h2 class="day-date-large">1월 16일 (금)</h2>
                     <p class="day-theme-large">🌊 요코하마 미나토미라이 (바다・야경)</p>
                 </div>
             </div>
 
             <div class="timeline">
-              <div class="timeline-item">
+                <div class="timeline-item">
+                    <div class="time-label"><span class="time-main">09:00</span></div>
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <div class="card-image has-image">
+                            <img src="D3c.jpg" alt="가와구치코 CISCO COFFEE">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">모닝 커피 | CISCO COFFEE</h3>
+                            <p class="card-description">샌프란시스코 스타일의 로스터리 카페입니다. 가와구치코 호수 바로 앞에 위치해 있어, 요코하마로 떠나기 전 향긋한 커피 한 잔과 함께 아침 호수의 여유를 즐기기 좋습니다.</p>
+                            <a href="https://maps.app.goo.gl/xrWv4Zypp29ndAuz5" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
+
+                <div class="timeline-item">
                     <div class="time-label"><span class="time-main">10:00</span></div>
                     <div class="timeline-dot"></div>
                     <div class="card">
@@ -476,6 +467,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
@@ -483,15 +475,16 @@
                     <div class="timeline-dot"></div>
                     <div class="card">
                         <div class="card-image has-image">
-                            <img src="D32.png" alt="요코하마 카페">
+                            <img src="D3p.jpg" alt="Pecorino -Market&Restaurant-">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">ZEBRA Coffee & Croissant</h3>
-                            <p class="card-description">미나토미라이 운하를 따라 위치한 인기 베이커리 카페. 거대한 크로와상이 명물입니다.</p>
-                            <a href="https://www.google.com/maps/search/ZEBRA+Coffee+Yokohama" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
+                            <h3 class="card-title">점심 | Pecorino -Market&Restaurant-</h3>
+                            <p class="card-description">요코하마 해머헤드 2층에 위치한 분위기 좋은 이탈리안 레스토랑입니다. 바다가 보이는 개방적인 공간에서 신선한 파스타와 피자를 즐기며 점심 식사를 합니다.</p>
+                            <a href="https://maps.app.goo.gl/pTYz2MmJpJiUMWXM7" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
                 
                 <div class="timeline-item">
@@ -508,6 +501,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
@@ -524,6 +518,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
@@ -540,9 +535,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
-                 <div class="timeline-item">
+                <div class="timeline-item">
                     <div class="time-label"><span class="time-main">21:00</span></div>
                     <div class="timeline-dot"></div>
                     <div class="card">
@@ -556,6 +552,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
@@ -578,13 +575,13 @@
         <section class="day-section">
             <div class="day-header-card">
                 <img src="D40.jpeg" alt="DAY4 Background 귀가" class="day-header-bg">
-                
                 <div class="day-header-overlay">
-                    <div class="day-badge-large" style="background-color: var(--accent-lavender);">DAY 4</div>
+                    <div class="day-badge-large">DAY 4</div>
                     <h2 class="day-date-large">1월 17일 (토)</h2>
                     <p class="day-theme-large">🎁 쇼핑과 귀가</p>
                 </div>
             </div>
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="time-label"><span class="time-main">10:00</span></div>
@@ -594,22 +591,24 @@
                         <div class="simple-content"><div class="simple-title">체크아웃</div></div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
-              <div class="timeline-item">
+                <div class="timeline-item">
                     <div class="time-label"><span class="time-main">10:00</span></div>
                     <div class="timeline-dot"></div>
                     <div class="card">
                         <div class="card-image has-image">
-                            <img src="D41.jpg" alt="요코하마 월드 포터스">
+                            <img src="D4q.jpg" alt="퀸즈 스퀘어 & 랜드마크 플라자">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">요코하마 월드 포터스</h3>
-                            <p class="card-description">쇼핑과 먹거리가 가득한 대형 쇼핑몰입니다. 특히 1층의 '하와이 타운'과 다양한 캐릭터 샵(산리오, 지브리 등)이 있어 여행 마지막 날 기념품을 사기에 최적의 장소입니다.</p>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Yokohama+World+Porters" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
+                            <h3 class="card-title">퀸즈 스퀘어 & 랜드마크 플라자</h3>
+                            <p class="card-description">미나토미라이의 상징인 두 개의 거대한 쇼핑몰이 연결되어 있습니다. 디즈니 스토어, 스누피 타운, 지브리(동구리 공화국) 등 캐릭터 샵과 다양한 패션 브랜드가 모여 있어 마지막 쇼핑을 즐기기에 최고입니다.</p>
+                            <a href="https://maps.app.goo.gl/ZmhPneFuHUWDG4yX6" target="_blank" class="map-link"><span class="map-icon">📍</span>지도 보기</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="arrow-connector"><span class="arrow-icon">↓</span></div>
 
                 <div class="timeline-item">
@@ -635,5 +634,3 @@
     </div>
 </body>
 </html>
-
-```
